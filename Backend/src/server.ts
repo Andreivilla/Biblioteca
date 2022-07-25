@@ -1,6 +1,7 @@
 import express, { application, NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import { routes } from "./routes";
+import mongoose from "mongoose";
 
 var cors = require('cors')
 const app = express();
@@ -13,6 +14,15 @@ var corsOptions = {
 app.use(express.json());
 
 app.use(routes);
+
+mongoose.connect("mongodb://localhost:27017/biblioteca")
+.then((data) => {
+    console.log('MongoDB Connection Succeeded', data.version);
+})
+
+.catch((err) => {
+    console.log('Error in DB connection:', err.message);
+})
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
