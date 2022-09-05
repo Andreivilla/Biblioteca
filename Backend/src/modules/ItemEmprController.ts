@@ -6,16 +6,9 @@ import ItemEmpr from "../database/ItemEmprModel";
 const ItemEmprController = {
     async update(req: Request, res: Response): Promise<Response> {
         const { id } = req.body;
-        const { marca, modelo, versao, ano, quilometragem, tipoCambio, precoVenda } = req.body
 
         await ItemEmpr.findByIdAndUpdate(id, {
-            marca: marca,
-            modelo: modelo,
-            versao: versao,
-            ano: ano,
-            quilometragem: quilometragem,
-            tipoCambio: tipoCambio,
-            precoVenda: precoVenda
+            numREnovacoes: 0
         })
             .then(data => {
                 return res.json(data)

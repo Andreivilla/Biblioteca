@@ -13,8 +13,8 @@
         <br>
       <input type="number" v-model="usuarioId" />
       <button @click="createreserva">Reservar</button>
-      <button @click="createempresta" v-if="avaliable">Emprestar</button>
-      <button @click="devolverlivro" v-else>Devolver</button>
+      <button @click="createempresta" >Emprestar</button>
+      <button @click="devolverlivro" >Devolver</button>
 
   </div>
 </template>
